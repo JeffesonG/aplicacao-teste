@@ -1,0 +1,22 @@
+services:
+
+  teste-back:
+    build: ./teste-back
+    ports:
+      - "8080:8080"
+    networks:
+      - teste
+      
+
+  teste-front:
+    build: ./teste-front
+    ports:
+      - "3000:3000"
+    networks:
+      - teste
+    depends_on:
+      - teste-back
+
+networks:
+  teste:
+    driver: bridge
