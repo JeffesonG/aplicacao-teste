@@ -1,0 +1,10 @@
+br/com/teste/utils/UsuarioUtils.class
+br/com/teste/dto/UsuarioDto.class
+br/com/teste/TesteServer.class
+br/com/teste/dto/UsuarioDto$UsuarioDtoBuilder.class
+br/com/teste/controller/UsuarioController.class
+br/com/teste/exceptions/UsuarioGenericException.class
+br/com/teste/entity/Usuario$UsuarioBuilder.class
+br/com/teste/entity/Usuario.class
+br/com/teste/domain/UsuarioService.class
+br/com/teste/config/WebConfig.class

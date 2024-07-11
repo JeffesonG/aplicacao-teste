@@ -1,0 +1,8 @@
+/home/jeffeson/Downloads/aplicacao-teste/teste-back/src/main/java/br/com/teste/controller/UsuarioController.java
+/home/jeffeson/Downloads/aplicacao-teste/teste-back/src/main/java/br/com/teste/dto/UsuarioDto.java
+/home/jeffeson/Downloads/aplicacao-teste/teste-back/src/main/java/br/com/teste/domain/UsuarioService.java
+/home/jeffeson/Downloads/aplicacao-teste/teste-back/src/main/java/br/com/teste/utils/UsuarioUtils.java
+/home/jeffeson/Downloads/aplicacao-teste/teste-back/src/main/java/br/com/teste/entity/Usuario.java
+/home/jeffeson/Downloads/aplicacao-teste/teste-back/src/main/java/br/com/teste/config/WebConfig.java
+/home/jeffeson/Downloads/aplicacao-teste/teste-back/src/main/java/br/com/teste/exceptions/UsuarioGenericException.java
+/home/jeffeson/Downloads/aplicacao-teste/teste-back/src/main/java/br/com/teste/TesteServer.java
