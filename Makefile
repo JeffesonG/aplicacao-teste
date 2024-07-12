@@ -13,8 +13,13 @@ backend:
 	cd $(BACKEND_DIR) && $(BACKEND_CMD)
 
 build:
-	docker compose build
+	@docker compose build
+
 up:
-	docker compose up -d
+	@docker compose up -d
+
 down:
-	docker compose down
+	@docker compose down
+
+teste:
+	@curl --fail http://localhost:3000
