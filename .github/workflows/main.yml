@@ -49,11 +49,11 @@ jobs:
 
       - name: Build and push Docker image
         id: push
-        uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
+        uses: docker/build-push-action@v6
         with:
           context: ./teste-back
           push: true
-          tags: jeffesongoncalves/app-back:latest
+          tags: jeffesongonalves/app-back:latest
 
   build-front:
     runs-on: ubuntu-latest
@@ -95,9 +95,9 @@ jobs:
           
       - name: Build and push Docker image
         id: push
-        uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
+        uses: docker/build-push-action@v6
         with:
           context: ./teste-front
           push: true
-          tags: jeffesongoncalves/app-front:latest
+          tags: jeffesongonalves/app-front:latest
 
