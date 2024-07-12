@@ -1,0 +1,91 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-back:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 22
+        uses: actions/setup-java@v3
+        with:
+          java-version: '22'
+
+      - name: Build app
+        run: |
+          cd teste-back
+          ./mvnw clean package
+
+      - name: Build Docker image
+        run: |
+          cd teste-back
+          docker build -t back-app:latest .
+
+      - name: Run Docker container for testing
+        run: |
+          docker run -d -p 8080:8080 --name app-back back-app:latest
+
+      - name: Wait for the Spring Boot app to start
+        run: sleep 30
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Push Docker image for Spring Boot app
+        run: |
+          docker tag app-back:latest jeffesongoncalves/app-back:latest
+          docker push jeffesongoncalves/app-back:latest
+
+  build-fornt:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Install dependencies and build Vue.js app
+        run: |
+          cd vue-app
+          npm install
+          npm run build
+
+      - name: Build Docker image
+        run: |
+          cd teste-front
+          docker build -t app-front:latest .
+
+      - name: Run Docker container 
+        run: |
+          docker run -d -p 3000:3000 --name front-app app-front:latest
+
+      - name: Wait for the Vue.js app to start
+        run: sleep 30
+
+      - name: Test 
+        run: curl --fail http://localhost:3000 || (docker logs app-front && exit 1)
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Push Docker image for Vue.js app
+        run: |
+          docker tag app-front:latest jeffesongoncalves/app-front:latest
+          docker push jeffesongoncalves/app-front:latest
