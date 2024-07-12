@@ -30,7 +30,7 @@ Execute o seguinte comando para executar o projeto:
 
 ### Parar do projeto
 
-Execute o seguinte comando para parar projeto:
+Execute o seguinte comando para parar o projeto:
 
 `$ make down`
 
@@ -54,7 +54,7 @@ Este job cuida da construção e publicação da imagem Docker para a aplicaçã
    Utiliza a ação `actions/setup-java@v3` para configurar o JDK 22.
 
 3. **Construir a aplicação**:
-   Executa comandos para limpar e construir o pacote da aplicação Spring Boot.
+   Executa comandos para empacotar e construir a aplicação Spring Boot.
 
 4. **Construir a imagem Docker**:
    Constrói a imagem Docker para a aplicação Spring Boot.
@@ -65,13 +65,10 @@ Este job cuida da construção e publicação da imagem Docker para a aplicaçã
 6. **Aguardar a inicialização do contêiner**:
    Espera 20 segundos para garantir que a aplicação esteja totalmente inicializada.
 
-7. **Testar se a aplicação está rodando**:
-   Utiliza `curl --fail` para verificar se a aplicação está respondendo corretamente.
-
-8. **Login no Docker Hub**:
+7. **Login no Docker Hub**:
    Utiliza a ação `docker/login-action@v2` para autenticar no Docker Hub.
 
-9. **Construir e publicar a imagem Docker**:
+8. **Construir e publicar a imagem Docker**:
    Utiliza a ação `docker/build-push-action@v2` para construir e publicar a imagem Docker no Docker Hub.
 
 
