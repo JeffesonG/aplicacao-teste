@@ -12,6 +12,8 @@ frontend:
 backend:
 	cd $(BACKEND_DIR) && $(BACKEND_CMD)
 
+build:
+	docker compose build
 up:
 	docker compose up -d
 down:
